@@ -1,6 +1,7 @@
 version: "3.1"
 
 stories:
+<<<<<<< HEAD
 - story: tell weather
   steps:
   - user: "How is the weather today"
@@ -55,3 +56,20 @@ stories:
     - phone: 3467332890
   - action: action_say_phone
 
+=======
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_happy
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_unhappy
+  
+>>>>>>> 2eec7ffd (added rasa files)

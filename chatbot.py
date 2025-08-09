@@ -5,8 +5,9 @@ import hashlib
 import datetime
 from typing import Dict, List, Optional, Tuple
 import uuid
-import requests  # NEW import for Rasa API
-
+import requests
+# import tts  # Removed because the 'tts' module could not be resolved
+import TextToSpeech as ttss
 # Page configuration
 st.set_page_config(
     page_title="SecureBank ChatBot",
@@ -185,12 +186,15 @@ def send_message():
     # Get Rasa responses with language information
     replies = send_to_rasa(user_message, selected_language)
     for reply in replies:
+
         st.session_state.messages.append({
             'content': reply,
             'timestamp': datetime.datetime.now().strftime('%I:%M %p'),
             'is_user': False
         })
-    
+    print(replies)
+    ttss.some(str(replies))
+    # tts.some(replies)  # Removed because the 'tts' module could not be resolved
     # Clear the text field by setting user_input to empty string
     st.session_state.user_input = ""
 
@@ -265,7 +269,7 @@ def main():
             render_message(m, m['is_user'])
 
     # Input field with language indicator and send button
-    st.markdown(f"<div class='language-selector'><strong>🌐 Current Language:</strong> {get_language_flag(st.session_state.selected_language)} {st.session_state.selected_language}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='language-selector' style='color:black'><strong>🌐 Current Language:</strong> {get_language_flag(st.session_state.selected_language)} {st.session_state.selected_language}</div>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns([5, 1, 1])
     with col1:

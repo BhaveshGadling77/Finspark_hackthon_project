@@ -1,13 +1,49 @@
 version: "3.1"
 
 rules:
+<<<<<<< HEAD
 
 - rule: Say goodbye anytime the user says goodbye
+=======
+- rule: Ask for language preference on greet
+  steps:
+  - intent: greet
+  - action: action_ask_language_preference
+
+- rule: Set language preference
+  steps:
+  - intent: set_language
+  - action: action_set_language
+
+- rule: Handle goodbye
+>>>>>>> 2eec7ffd (added rasa files)
   steps:
   - intent: goodbye
   - action: utter_goodbye
 
+<<<<<<< HEAD
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+=======
+- rule: Handle bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Handle happy mood
+  steps:
+  - intent: mood_happy
+  - action: utter_happy
+
+- rule: Handle unhappy mood
+  steps:
+  - intent: mood_unhappy
+  - action: utter_unhappy
+
+- rule: Handle what can do question
+  steps:
+  - intent: ask_what_can_do
+  - action: utter_ask_what_can_do
+>>>>>>> 2eec7ffd (added rasa files)

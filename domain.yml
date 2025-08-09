@@ -1,0 +1,212 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_happy
+  - mood_unhappy
+  - bot_challenge
+  - ask_what_can_do
+  - set_language
+
+slots:
+  language:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: language
+
+entities:
+  - language
+
+actions:
+  - action_set_language
+  - action_ask_language_preference
+
+responses:
+  utter_ask_language:
+  - text: "Please choose your preferred language / कृपया अपनी भाषा चुनें / कृपया तुमची भाषा निवडा / దయచేసి మీ భాషను ఎంచుకోండి / ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ:"
+    buttons:
+    - title: "English"
+      payload: '/set_language{{"language":"en"}}'
+    - title: "हिंदी"
+      payload: '/set_language{{"language":"hi"}}'
+    - title: "मराठी"
+      payload: '/set_language{{"language":"mr"}}'
+    - title: "తెలుగు"
+      payload: '/set_language{{"language":"te"}}'
+    - title: "ಕನ್ನಡ"
+      payload: '/set_language{{"language":"kn"}}'
+
+  utter_language_set:
+  - condition:
+    - type: slot
+      name: language
+      value: "en"
+    text: "Great! I'll respond in English from now on."
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "बहुत बढ़िया! अब मैं हिंदी में जवाब दूंगा।"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "उत्तम! आता मी मराठीत उत्तर देईन।"
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "అద్భుతం! ఇప్పుడు నేను తెలుగులో సమాధానం ఇస్తాను।"
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ಅದ್ಭುತ! ಈಗ ನಾನು ಕನ್ನಡದಲ್ಲಿ ಉತ್ತರಿಸುತ್ತೇನೆ."
+  - text: "Language preference saved!"
+
+  utter_greet:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "नमस्ते! मैं आज आपकी कैसे मदद कर सकता हूँ?"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "नमस्कार! मी आज तुम्हाला कशी मदत करू शकेन?"
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "నమస్కారం! నేను మీకు ఎలా సహాయం చేయగలను?"
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ನಮಸ್ಕಾರ! ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
+  - text: "Hello! How can I help you today?"
+
+  utter_goodbye:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "अलविदा! आपका दिन शुभ हो।"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "अच्छा, येतो! तुमचा दिवस चांगला जावो."
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "వీడ్కోలు! మళ్ళీ కలుద్దాం."
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ವಿದಾಯ! ಮತ್ತೆ ಭೇಟಿಯಾಗೋಣ."
+  - text: "Goodbye!"
+
+  utter_iamabot:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "मैं एक बॉट हूँ, जो रसा द्वारा संचालित है।"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "मी एक बॉट आहे, जो रसा द्वारे समर्थित आहे."
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "నేను ఒక బాట్ను, రసా ద్వారా శక్తివంతం చేయబడింది."
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ನಾನು ಒಂದು ಬಾಟ್, ರಸಾ ಮೂಲಕ ಶಕ್ತಿ ಪಡೆದಿದ್ದೇನೆ."
+  - text: "I am a bot, powered by Rasa."
+
+  utter_happy:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "यह सुनकर अच्छा लगा! मैं खुश हूँ कि आप खुश हैं।"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "हे ऐकून छान वाटलं! मी खूप आनंदी आहे."
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "అది వినడం చాలా బాగుంది! మీరు సంతోషంగా ఉన్నారని నాకు సంతోషం."
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ಅದನ್ನು ಕೇಳಿ ಬಹಳ ಸಂತೋಷವಾಯಿತು! ನೀವು ಸಂತೋಷದಿಂದ ಇರುವುದು ನನಗೆ ಸಂತೋಷ."
+  - text: "Great to hear that! I'm glad you're feeling good!"
+
+  utter_unhappy:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "मुझे खुशी नहीं है यह सुनकर। मैं आपकी कैसे मदद कर सकता हूँ?"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "हे ऐकून वाईट वाटलं। मी तुम्हाला कशी मदत करू शकेन?"
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "అది వినడం బాధాకరం. నేను మీకు ఎలా సహాయం చేయగలను?"
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ಅದನ್ನು ಕೇಳಿ ಬೇಸರವಾಯಿತು. ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
+  - text: "I'm sorry to hear that. Is there anything I can help you with?"
+
+  utter_ask_what_can_do:
+  - condition:
+    - type: slot
+      name: language
+      value: "hi"
+    text: "मैं आपकी विभिन्न तरीकों से मदद कर सकता हूँ। मैं एक बैंकिंग सहायक हूँ और वित्तीय सेवाओं के बारे में जानकारी दे सकता हूँ।"
+  - condition:
+    - type: slot
+      name: language
+      value: "mr"
+    text: "मी तुम्हाला विविध प्रकारे मदत करू शकते. मी एक बँकिंग सहायक आहे आणि आर्थिक सेवांची माहिती देऊ शकते."
+  - condition:
+    - type: slot
+      name: language
+      value: "te"
+    text: "నేను మీకు వివిధ విధాలుగా సహాయం చేయగలను. నేను బ్యాంకింగ్ సహాయకుని మరియు ఆర్థిక సేవల గురించి సమాచారం ఇవ్వగలను."
+  - condition:
+    - type: slot
+      name: language
+      value: "kn"
+    text: "ನಾನು ನಿಮಗೆ ವಿವಿಧ ರೀತಿಯಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು. ನಾನು ಬ್ಯಾಂಕಿಂಗ್ ಸಹಾಯಕ ಮತ್ತು ಹಣಕಾಸು ಸೇವೆಗಳ ಬಗ್ಗೆ ಮಾಹಿತಿ ನೀಡಬಹುದು."
+  - text: "I can help you with various banking and financial services. I'm a financial assistant chatbot."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
