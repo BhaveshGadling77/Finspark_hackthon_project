@@ -176,7 +176,6 @@ def send_message():
     # Get selected language (default to English if not set)
     selected_language = st.session_state.get('selected_language', get_default_language())
     
-    # Add user message
     st.session_state.messages.append({
         'content': user_message,
         'timestamp': datetime.datetime.now().strftime('%I:%M %p'),

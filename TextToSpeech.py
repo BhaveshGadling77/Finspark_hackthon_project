@@ -2,7 +2,6 @@ from gtts import gTTS
 from playsound import playsound
 def main():
     print("hello")
-    some("This is a test.")
 
 def some(text:str):
     language = 'en'
