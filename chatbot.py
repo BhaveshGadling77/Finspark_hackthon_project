@@ -193,7 +193,7 @@ def send_message():
             'is_user': False
         })
     print(replies)
-    ttss.some(str(replies))
+    # ttss.some(str(replies))
     # tts.some(replies)  # Removed because the 'tts' module could not be resolved
     # Clear the text field by setting user_input to empty string
     def send_message():
