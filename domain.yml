@@ -1,3 +1,4 @@
+---
 version: "3.1"
 
 intents:
@@ -10,14 +11,34 @@ intents:
   - bot_challenge
   - ask_what_can_do
   - set_language
+  # FAQ intents
+  - ask_account_opening
+  - ask_balance_enquiry
+  - ask_atm_services
+  - ask_internet_banking
+  - ask_loan_services
+  - ask_credit_card
+  - ask_mobile_banking
+  - ask_whatsapp_banking
+  - ask_customer_care
+  - ask_complaints
+  - ask_branch_location
+  - ask_working_hours
+  - ask_minimum_balance
+  - ask_ifsc_code
+  - ask_account_types
+  - ask_interest_rates
+  - ask_pmjdy_account
+  - ask_nri_services
+  - ask_salary_account
 
 slots:
   language:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: language
+      - type: from_entity
+        entity: language
 
 entities:
   - language
@@ -28,184 +49,865 @@ actions:
 
 responses:
   utter_ask_language:
-  - text: "Please choose your preferred language / कृपया अपनी भाषा चुनें / कृपया तुमची भाषा निवडा / దయచేసి మీ భాషను ఎంచుకోండి / ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ:"
-    buttons:
-    - title: "English"
-      payload: '/set_language{{"language":"en"}}'
-    - title: "हिंदी"
-      payload: '/set_language{{"language":"hi"}}'
-    - title: "मराठी"
-      payload: '/set_language{{"language":"mr"}}'
-    - title: "తెలుగు"
-      payload: '/set_language{{"language":"te"}}'
-    - title: "ಕನ್ನಡ"
-      payload: '/set_language{{"language":"kn"}}'
+    - text: >-
+        Please choose your preferred language / कृपया अपनी भाषा चुनें / कृपया तुमची भाषा निवडा / దయచేసి మీ భాషను ఎంచుకోండి / ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ:
+      # buttons:
+      #   - title: "English"
+      #     payload: '/set_language{{"language":"en"}}'
+
+      #   - title: "हिंदी"
+      #     payload: '/set_language{"language":"hi"}}'
+      #   - title: "मराठी"
+      #     payload: '/set_language{"language":"mr"}}'
+      #   - title: "తెలుగు"
+      #     payload: '/set_language{"language":"te"}}'
+      #   - title: "ಕನ್ನಡ"
+      #     payload: '/set_language{"language":"kn"}}'
 
   utter_language_set:
-  - condition:
-    - type: slot
-      name: language
-      value: "en"
-    text: "Great! I'll respond in English from now on."
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "बहुत बढ़िया! अब मैं हिंदी में जवाब दूंगा।"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "उत्तम! आता मी मराठीत उत्तर देईन।"
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "అద్భుతం! ఇప్పుడు నేను తెలుగులో సమాధానం ఇస్తాను।"
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ಅದ್ಭುತ! ಈಗ ನಾನು ಕನ್ನಡದಲ್ಲಿ ಉತ್ತರಿಸುತ್ತೇನೆ."
-  - text: "Language preference saved!"
+    - condition:
+        - type: slot
+          name: language
+          value: "en"
+      text: "Great! I'll respond in English from now on."
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "बहुत बढ़िया! अब मैं हिंदी में जवाब दूंगा।"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "उत्तम! आता मी मराठीत उत्तर देईन।"
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "అద్భుతం! ఇప్పుడు నేను తెలుగులో సమాధానం ఇస్తాను।"
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ಅದ್ಭುತ! ಈಗ ನಾನು ಕನ್ನಡದಲ್ಲಿ ಉತ್ತರಿಸುತ್ತೇನೆ."
+    - text: "Language preference saved!"
 
   utter_greet:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "नमस्ते! मैं आज आपकी कैसे मदद कर सकता हूँ?"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "नमस्कार! मी आज तुम्हाला कशी मदत करू शकेन?"
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "నమస్కారం! నేను మీకు ఎలా సహాయం చేయగలను?"
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ನಮಸ್ಕಾರ! ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
-  - text: "Hello! How can I help you today?"
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "नमस्ते! मैं आज आपकी कैसे मदद कर सकता हूँ?"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "नमस्कार! मी आज तुम्हाला कशी मदत करू शकेन?"
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "నమస్కారం! నేను మీకు ఎలా సహాయం చేయగలను?"
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ನಮಸ್ಕಾರ! ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
+    - text: "Hello! How can I help you today?"
 
+  # Basic utterances
   utter_goodbye:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "अलविदा! आपका दिन शुभ हो।"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "अच्छा, येतो! तुमचा दिवस चांगला जावो."
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "వీడ్కోలు! మళ్ళీ కలుద్దాం."
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ವಿದಾಯ! ಮತ್ತೆ ಭೇಟಿಯಾಗೋಣ."
-  - text: "Goodbye!"
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "अलविदा! आपका दिन शुभ हो।"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "अच्छा, येतो! तुमचा दिवस चांगला जावो."
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "వీడ్కోలు! మళ్ళీ కలుద్దాం."
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ವಿದಾಯ! ಮತ್ತೆ ಭೇಟಿಯಾಗೋಣ."
+    - text: "Goodbye!"
 
   utter_iamabot:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "मैं एक बॉट हूँ, जो रसा द्वारा संचालित है।"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "मी एक बॉट आहे, जो रसा द्वारे समर्थित आहे."
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "నేను ఒక బాట్ను, రసా ద్వారా శక్తివంతం చేయబడింది."
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ನಾನು ಒಂದು ಬಾಟ್, ರಸಾ ಮೂಲಕ ಶಕ್ತಿ ಪಡೆದಿದ್ದೇನೆ."
-  - text: "I am a bot, powered by Rasa."
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "मैं एक बॉट हूँ, जो रसा द्वारा संचालित है।"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "मी एक बॉट आहे, जो रसा द्वारे समर्थित आहे."
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "నేను ఒక బాట్ను, రసా ద్వారా శక్తివంతం చేయబడింది."
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ನಾನು ಒಂದು ಬಾಟ್, ರಸಾ ಮೂಲಕ ಶಕ್ತಿ ಪಡೆದಿದ್ದೇನೆ."
+    - text: "I am a bot, powered by Rasa."
 
   utter_happy:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "यह सुनकर अच्छा लगा! मैं खुश हूँ कि आप खुश हैं।"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "हे ऐकून छान वाटलं! मी खूप आनंदी आहे."
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "అది వినడం చాలా బాగుంది! మీరు సంతోషంగా ఉన్నారని నాకు సంతోషం."
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ಅದನ್ನು ಕೇಳಿ ಬಹಳ ಸಂತೋಷವಾಯಿತು! ನೀವು ಸಂತೋಷದಿಂದ ಇರುವುದು ನನಗೆ ಸಂತೋಷ."
-  - text: "Great to hear that! I'm glad you're feeling good!"
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "यह सुनकर अच्छा लगा! मैं खुश हूँ कि आप खुश हैं।"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "हे ऐकून छान वाटलं! मी खूप आनंदी आहे."
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "అది వినడం చాలా బాగుంది! మీరు సంతోషంగా ఉన్నారని నాకు సంతోషం."
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ಅದನ್ನು ಕೇಳಿ ಬಹಳ ಸಂತೋಷವಾಯಿತು! ನೀವು ಸಂತೋಷದಿಂದ ಇರುವುದು ನನಗೆ ಸಂತೋಷ."
+    - text: "Great to hear that! I'm glad you're feeling good!"
 
   utter_unhappy:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "मुझे खुशी नहीं है यह सुनकर। मैं आपकी कैसे मदद कर सकता हूँ?"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "हे ऐकून वाईट वाटलं। मी तुम्हाला कशी मदत करू शकेन?"
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "అది వినడం బాధాకరం. నేను మీకు ఎలా సహాయం చేయగలను?"
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ಅದನ್ನು ಕೇಳಿ ಬೇಸರವಾಯಿತು. ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
-  - text: "I'm sorry to hear that. Is there anything I can help you with?"
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "मुझे खुशी नहीं है यह सुनकर। मैं आपकी कैसे मदद कर सकता हूँ?"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "हे ऐकून वाईट वाटलं। मी तुम्हाला कशी मदत करू शकेन?"
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "అది వినడం బాధాకరం. నేను మీకు ఎలా సహాయం చేయగలను?"
+    - condition:
+        - type: slot
+          name: language
+          value: "kn"
+      text: "ಅದನ್ನು ಕೇಳಿ ಬೇಸರವಾಯಿತು. ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
+    - text: "I'm sorry to hear that. Is there anything I can help you with?"
 
   utter_ask_what_can_do:
-  - condition:
-    - type: slot
-      name: language
-      value: "hi"
-    text: "मैं आपकी विभिन्न तरीकों से मदद कर सकता हूँ। मैं एक बैंकिंग सहायक हूँ और वित्तीय सेवाओं के बारे में जानकारी दे सकता हूँ।"
-  - condition:
-    - type: slot
-      name: language
-      value: "mr"
-    text: "मी तुम्हाला विविध प्रकारे मदत करू शकते. मी एक बँकिंग सहायक आहे आणि आर्थिक सेवांची माहिती देऊ शकते."
-  - condition:
-    - type: slot
-      name: language
-      value: "te"
-    text: "నేను మీకు వివిధ విధాలుగా సహాయం చేయగలను. నేను బ్యాంకింగ్ సహాయకుని మరియు ఆర్థిక సేవల గురించి సమాచారం ఇవ్వగలను."
-  - condition:
-    - type: slot
-      name: language
-      value: "kn"
-    text: "ನಾನು ನಿಮಗೆ ವಿವಿಧ ರೀತಿಯಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು. ನಾನು ಬ್ಯಾಂಕಿಂಗ್ ಸಹಾಯಕ ಮತ್ತು ಹಣಕಾಸು ಸೇವೆಗಳ ಬಗ್ಗೆ ಮಾಹಿತಿ ನೀಡಬಹುದು."
-  - text: "I can help you with various banking and financial services. I'm a financial assistant chatbot."
+    - condition:
+        - type: slot
+          name: language
+          value: "hi"
+      text: "मैं आपकी विभिन्न तरीकों से मदद कर सकता हूँ। मैं बैंकिंग सहायक हूँ और वित्तीय सेवाओं के बारे में बता सकता हूँ।"
+    - condition:
+        - type: slot
+          name: language
+          value: "mr"
+      text: "मी तुमची वेगवेगळ्या प्रकारे मदत करू शकते. मी बँकिंग सहाय्यक आहे व आर्थिक सेवा सांगू शकते."
+    - condition:
+        - type: slot
+          name: language
+          value: "te"
+      text: "నేను మీకు వినివిదాహ చేరు సహాయం చేయగలను. బ్యాంకింగ్ సహాయకుడిని మరియు ఆర్థిక సేవల సమాచారాన్ని ఇవ్వగలను."
+    - text: "I can help you with various banking and financial services. I'm a financial assistant chatbot."
+
+  utter_account_opening:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        बैंक ऑफ़ महाराष्ट्र में बचत / चालू खाता खोलने के चरण –  
+
+        1️⃣ ऑनलाइन: “Online SB Opening Application” पेज खोलें ➜ फ़ॉर्म भरें ➜
+        केवाईसी दस्तावेज (आधार/पैन + पते का प्रमाण + फोटो) PDF में अपलोड करें ➜
+        2-3 दिन में CIF ID SMS द्वारा प्राप्त होगा[31][15]  
+
+        2️⃣ शाखा: खाता-खोलने का कॉमन फ़ॉर्म लें ➜ पहचान-पते के दस्तावेज एवं दो
+        फोटो प्रस्तुत करें ➜ ₹० शून्य-बैलेंस PMJDY / लोक-बचत या ₹2 000 (शहरी) / ₹1
+        000 (अर्ध-शहरी) / ₹500 (ग्रामीण) न्यूनतम शेष[111].  
+
+        • फॉर्म डाउनलोड: bankofmaharashtra.in/downloads → “Deposit A/c Opening
+        Forms”[15]  
+
+        • 10–15 मिनिट में वीडियो-KYC विकल्प भी उपलब्ध (सिर्फ बचत खाता).  
+
+        • सफल स्वीकृति पर पासबुक, RuPay डेबिट-कार्ड व नेट-बैंकिंग किट पोस्ट द्वारा
+        मिलती है.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        खाते उघडण्याची सविस्तर प्रक्रिया –  
+
+        1️⃣ ऑनलाइन: “Online SB Opening” वर लॉग-इन करा ➜ अर्ज भरा ➜ आधार/पॅन,
+        पत्त्याचा पुरावा, फोटो PDF अपलोड करा ➜ २-३ दिवसात CIF SMS येईल[31][15].  
+
+        2️⃣ शाखा: कॉमन फॉर्म भरा ➜ मूळ केवायसी दाखले दाखवा व सत्यप्रत करून जमा करा
+        ➜ शून्य-बॅलन्स लोक बचत/PMJDY किंवा मेट्रो ₹2,000, उपनगर ₹1,000, ग्रामीण
+        ₹500 किमान शिल्लक ठेव[111].  
+
+        • फॉर्म डाउनलोड : bankofmaharashtra.in/downloads[15]  
+
+        • डेबिट-कार्ड, पासबुक, इंटरनेट-बँकिंग क्रेडेन्शियल्स किट स्वरूपात
+        मिळतात.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        బ్యాంక్ ఆఫ్ మహారాష్ట్రలో ఖాతా తెరవడం –  
+
+        1️⃣ ఆన్‌లైన్ : “Online SB Opening” దరఖాస్తు → వివరాలు, ఆధార్/పాన్ +
+        చిరునామా ఆధారం + ఫోటోను అప్లోడ్ చేయండి → 2-3 రోజుల్లో CIF SMS
+        వస్తుంది[31][15].  
+
+        2️⃣ బ్రాంచ్ : సాధారణ అప్లికేషన్ ఫారమ్ పూరించండి → అసలు KYC డాక్యుమెంట్లు
+        చూపించి ధ్రువీకరించి సమర్పించండి → మినిమం బ్యాలెన్స్ (నగరాల్లో ₹2,000 /
+        సెమీయర్బన్ ₹1,000 / గ్రామీణ ₹500) లేక జీరో-బ్యాలెన్స్
+        PMJDY/లోక్-బచాత్[111].  
+
+        • ఫారమ్ డౌన్‌లోడ్: bankofmaharashtra.in/downloads[15]  
+
+        • విజయవంతమైన అనుమతి తరువాత డెబిట్ కార్డ్, పాస్‌బుక్, నెట్‌-బ్యాంకింగ్
+        కిట్లు పొందవచ్చు.
+    - text: >
+        Steps to open an account –  
+
+        1️⃣ Online: Visit “Online SB Opening Application” ➜ fill details ➜ upload
+        Aadhaar/PAN, address proof & photo ➜ receive CIF ID in 2-3 days[31][15].  
+
+        2️⃣ Branch: Fill common account-opening form ➜ present & submit originals
+        + copies of KYC docs ➜ maintain minimum balance (₹2 000 urban / ₹1 000
+        semi-urban / ₹500 rural) or open zero-balance PMJDY/Lok Bachat
+        account[111].  
+
+        Forms download: bankofmaharashtra.in/downloads[15]  
+
+        On approval you get passbook, RuPay debit card and Internet-banking kit by
+        post.
+  utter_balance_enquiry:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        बैलेंस देखने के 5 आसान तरीके –  
+        • मिस्ड कॉल: 98333 35555 पर कॉल काटें – SMS में बैलेंस आएगा[66][16].  
+        • SMS: BALAVL<खाता नं.><MPIN> लिखकर 9223181818 भेजें[13][19].  
+        • WhatsApp: रजि. नंबर से ‘Hi’ 70660 36640 भेजें – विकल्प चुनें[37][31].  
+        • महा-मोबाइल Plus / नेट-बैंकिंग लॉग-इन करें → “Account Summary”[26][29].  
+        • किसी भी ATM में डेबिट-कार्ड डालकर “Balance Enquiry” चुनें.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        खातेचा शिल्लक तपासण्याचे मार्ग –  
+        • मिस्ड कॉल : 98333 35555[66]  
+        • SMS : BALAVL<Acc><MPIN> 9223181818 ला पाठवा[13].  
+        • WhatsApp : ‘Hi’ 70660 36640[37]  
+        • महा-मोबाइल Plus / नेट-बँकिंग[26][29]  
+        • एटीएमवरून “Balance Enquiry”.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: |
+        బ్యాలెన్స్ తెలుసుకోవడానికి –  
+        • మిస్డ్ కాల్ : 98333 35555[66]  
+        • SMS : BALAVL<అకౌంట్><MPIN> ను 9223181818కి[13]  
+        • WhatsApp : ‘Hi’ to 70660 36640[37]  
+        • మహామొబైల్ Plus / ఇంటర్నెట్ బ్యాంకింగ్[26][29]  
+        • ఏటీఎం లో “Balance Enquiry”.
+    - text: >
+        Ways to check your balance –  
+
+        1. Missed call 98333 35555 (any BOM account linked to the
+        number)[66][16]  
+
+        2. SMS BALAVL<acct><MPIN> to 9223181818 for instant SMS[13][19]  
+
+        3. WhatsApp Banking: send “Hi” to +91 70660 36640[37][31]  
+
+        4. Net-Banking / MahaMobile Plus app dashboard[26][29]  
+
+        5. Use any ATM → Balance Enquiry.
+  utter_atm_services:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        ATM सेवाएँ व ब्लॉक-सहायता –  
+
+        • कार्ड हॉट-लिस्ट (24×7 टोल-फ्री): 1800-233-4526 /
+        1800-102-2636[38][11].  
+
+        • लैंड-लाइन महासेवा: 020-26104400, 020-48527200.  
+
+        • दैनिक नकद निकासी सीमा: ₹50,000; POS/ईकॉम: ₹2 लाख[8].  
+
+        • शिकायत ई-मेल : atmclaim@mahabank.co.in[8].  
+
+        • कार्ड खोने पर तत्काल ऊपर नंबर पर कॉल करें, या महा-मोबाइल Plus → “Card
+        Hotlist” चुनें.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        ATM सेवा –  
+        • हॉटलिस्ट : 1800-233-4526 / 1800-102-2636[38]  
+        • लँडलाईन : 020-26104400 / 48527200  
+        • दिवसाची रोख मर्यादा ₹50k, POS ₹2 लाख[8]  
+        • ईमेल : atmclaim@mahabank.co.in.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: |
+        ATM సేవలు –  
+        • హాట్‌లిస్టింగ్ టైట్ఫ్రీ : 1800-233-4526 / 1800-102-2636[38]  
+        • ల్యాండ్‌లైన్ : 020-26104400 / 48527200  
+        • డైలీ క్యాష్ లిమిట్ ₹50k, POS ₹2 లక్షలు[8]  
+        • ఇ-మెయిల్ : atmclaim@mahabank.co.in.
+    - text: |
+
+        ATM support –  
+        • Card hot-listing 1800-233-4526 / 1800-102-2636 (24×7)[38][11]  
+        • Daily withdrawal limit ₹50 000; POS/e-com ₹2 lakh[8]  
+        • ATM Card Cell, Pune: 020-24506201; email atmclaim@mahabank.co.in[8].
+  utter_internet_banking:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        इंटरनेट बैंकिंग (MahaConnect) सक्रिय करें –  
+
+        • शाखा में ‘Internet Banking’ फॉर्म जमा करें या ऑनलाइन “New User?” लिंक पर
+        जाएँ[81].  
+
+        • पासवर्ड / यूज़र-ID डाक से मिलेंगे; टोल-फ्री 1800-233-4526 पर कॉल कराएँ
+        सक्रियता[32].  
+
+        • वैकल्पिक SMS ACTV to 9223181818; पुष्टि OTP से होगी[29].  
+
+        • लॉग-इन URL : <https://www.mahaconnect.in>[29].  
+
+        • पासवर्ड भूलने पर “Forgot Password” ➜ डेबिट-कार्ड विवरण+OTP
+        भरें[29][43].
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        नेट-बँकिंग MahaConnect अॅक्टिव्ह करा –  
+        • शाखेत अर्ज करा किंवा “New User?” लिंकद्वारे नोंदणी[81].  
+        • यूजर ID/पासवर्ड पोस्टाने; 1800-233-4526 वर कॉल करून सक्रिय करा[32].  
+        • SMS ACTV 9223181818[29]  
+        • URL : mahaconnect.in[29]  
+        • पासवर्ड विसरल्यास ‘Forgot Password’ वापरा[43].
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        ఇంటర్నెట్ బ్యాంకింగ్ నమోదు –  
+
+        • బ్రాంచ్‌లో ఫారం సమర్పించండి లేదా “New User?” పేజీలో స్వ-నమోదు[81].  
+
+        • యూజర్ ID/పాస్‌వర్డ్ పోస్టెస్ ద్వారా వస్తాయి; 1800-233-4526కి కాల్ చేసి
+        యాక్టివేషన్[32].  
+
+        • ACTV SMS 9223181818కి పంపండి[29].  
+
+        • లాగిన్ URL mahaconnect.in[29].  
+
+        • పాస్‌వర్డ్ మర్చిపోతే ‘Forgot Password’ ఎంపిక[43].
+    - text: >
+        Internet Banking guide –  
+
+        • Register at branch or via “New User?” online form[32]  
+
+        • Receive User-ID & passwords by post, then activate on toll-free
+        1800-233-4526 / 1800-102-2636[32]  
+
+        • Quick activation: SMS ACTV to 9223181818[29]  
+
+        • Login URL: https://www.mahaconnect.in (Retail / Corporate)[29]  
+
+        • Forgot password → debit-card + OTP reset flow[43].
+  utter_mobile_banking:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text:
+        "महा-मोबाइल Plus ऐप्प (Android / iOS) –  \n• प्ले-स्टोर या ऐप-स्टोर से “Mahamobile Plus” डाउनलोड करें[35][33].  \n•
+        ‘Register’ क्लिक करें → SMS सत्यापन → विकल्प चुनें: Internet-Banking ID, कार्ड PIN, आधार-OTP या शाखा Token[26][35].
+        \n• 4-अंकीय MPIN व MTPIN सेट करें ➜ तुरंत बैलेंस, UPI, NEFT/IMPS, बिल पेमेंट सुविधा[26][27].  \n•
+        सहायता 1800-233-4526 / digitalsupport@mahabank.co.in[33].  \n• ट्यूटोरियल वीडियो : https://youtu.be/3ooxiE-YnXg \U0001F4F9[35]  \n"
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        महा-मोबाइल Plus वापरण्याची पद्धत –  
+        • प्ले-स्टोर/अ‍ॅप-स्टोअरवरून डाउनलोड करा[35]  
+        • ‘Register’ → SMS OTP → Internet-Banking ID इत्यादी निवडा[35]  
+        • MPIN व MTPIN सेट करा; त्वरित फंड ट्रान्सफर, बिल पेमेंट, UPI इ.[26][27]  
+        • सहाय्य क्रमांक 1800-233-4526.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: |
+        మహామొబైల్ Plus యాప్ –  
+        • Google Play / App Store నుండి డౌన్‌లోడ్[35][33]  
+        • ‘Register’ → SMS ధృవీకరణ → Internet Banking ID / ATM కార్డ్ ఎంపిక[35]  
+        • 4 అంకెల MPIN, MTPIN సెట్ చేసి వెంటనే లావాదేవీలు చేయండి[26]  
+        • సహాయం 1800-233-4526.
+    - text: "MahaMobile Plus – quick steps:  \n1. Download from Play Store / App Store[26][33]  \n2. Tap ‘Register’ → auto-SMS verification → choose Internet-banking ID / Card / Aadhaar / Branch token[26][35]  \n3. Set 4-digit MPIN (login) + MTPIN (transactions).  \n4. Access balance, UPI, NEFT/IMPS, bill pay, FD, investments[27].  \nVideo guide: https://youtu.be/3ooxiE-YnXg \U0001F4F9\n"
+  utter_whatsapp_banking:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        व्हाट्सऐप बैंकिंग (24×7) –  
+
+        ➤ मोबाइल में +91 70660 36640 सेव करें ➤ ‘Hi’ भेजें ➤ OTP सत्यापन करें ➤
+        मेन्यू से बैलेंस, मिनी-स्टेटमेंट, चेक बुक निवेदन, शाखा/ATM लोकेटर
+        चुनें[42][34].  
+
+        • सेवा निःशुल्क, एंड-टू-एंड एन्क्रिप्टेड.  
+
+        • वित्तीय ट्रांज़ैक्शन नहीं, केवल सूचना सेवाएँ[28].
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        WhatsApp बँकिंग – 70660 36640 हा क्रमांक सेव्ह करा → ‘Hi’ पाठवा → OTP
+        नोंदणी → बॅलन्स, मिनी स्टेटमेंट, चेक बुक विनंती, ATM शोध[42][34].
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        WhatsApp బ్యాంకింగ్ – +91 70660 36640ను సేవ్ చేసి ‘Hi’ పంపండి → OTP
+        ధృవీకరణ → మెనూలో బ్యాలెన్స్ మొదలైన సేవలు[42][31].
+    - text: >
+        WhatsApp Banking (any customer or non-customer):  
+
+        1. Save +91 70660 36640. 2. Send “Hi”. 3. Accept T&C → menu appears →
+        Balance, mini statement, cheque status, branch/ATM finder, opt-out,
+        etc.[42][34]  
+
+        End-to-end encrypted, free of cost, info-only.
+  utter_customer_care:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        कस्टमर केयर –  
+
+        • ऑल-इंडिया टोल-फ्री : 1800-233-4526 / 1800-102-2636 (MAHASEVA
+        24×7)[27][14]  
+
+        • WhatsApp हेल्पलाइन: 70660 36640 (सिर्फ गैर-वित्तीय प्रश्न)[14]  
+
+        • ई-मेल शिकायत: hocomplaints@mahabank.co.in,
+        cmcustomerservice@mahabank.co.in[16]  
+
+        • ATM/कार्ड हॉट-लिस्ट: ऊपर टोल-फ्री या 020-48527200[8].
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        ग्राहक सेवा – टोल-फ्री 1800-233-4526 / 1800-102-2636; ईमेल
+        hocomplaints@mahabank.co.in[27][16]
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: |
+        కస్టమర్ కేర్ –  
+        • టోల్-ఫ్రీ : 1800-233-4526 / 1800-102-2636[27]  
+        • WhatsApp : 70660 36640[14]  
+        • ఈ-మెయిల్ : hocomplaints@mahabank.co.in[16].
+    - text: >
+        Customer support – Toll-free 1800-233-4526 / 1800-102-2636 (24×7)[11][14];
+        WhatsApp 70660 36640; email hocomplaints@mahabank.co.in[16].
+  utter_complaints:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        शिकायत दर्ज करने के 4 तरीके –  
+
+        1️⃣ ऑनलाइन: bankofmaharashtra.in/contact-us → “Raise a Complaint” फ़ॉर्म
+        भरें।  
+
+        2️⃣ ई-मेल: hocomplaints@mahabank.co.in /
+        cmcustomerservice@mahabank.co.in.  
+
+        3️⃣ कॉल: टोल-फ्री 1800-233-4526 या 1800-102-2636 (24×7)।  
+
+        4️⃣ शाखा: शिकायत रजिस्टर में लिखें → 7 दिन में समाधान न मिले तो ज़ोनल
+        कार्यालय → प्रधान नोडल अधिकारी तक अपील।  
+
+        SMS / ई-मेल द्वारा आपको रेफ़रेंस ID मिलेगा जिसे “Complaint Status” पेज पर
+        ट्रैक करें।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        तक्रार नोंदविण्याचे मार्ग –  
+
+        1️⃣ ऑनलाइन “Raise a Complaint” फॉर्म (bankofmaharashtra.in/contact-us).  
+
+        2️⃣ ईमेल hocomplaints@mahabank.co.in / cmcustomerservice@mahabank.co.in.  
+
+        3️⃣ टोल-फ्री 1800-233-4526 / 1800-102-2636 (दिवस-रात).  
+
+        4️⃣ शाखेत तक्रार पुस्तिकेत नोंद करा → 7 दिवसांत तोडगा नसेल तर क्षेत्रीय
+        कार्यालय → प्रधान नोडल अधिकारीकडे अपील करा.  
+
+        रेफरन्स ID द्वारे ऑनलाइन स्थिती तपासा.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        ఫిర్యాదు చేయడానికి –  
+
+        1️⃣ ఆన్‌లైన్ “Raise a Complaint” ఫారమ్
+        (bankofmaharashtra.in/contact-us).  
+
+        2️⃣ ఈ-మెయిల్ hocomplaints@mahabank.co.in /
+        cmcustomerservice@mahabank.co.in.  
+
+        3️⃣ టోల్-ఫ్రీ 1800-233-4526 / 1800-102-2636 (24×7).  
+
+        4️⃣ బ్రాంచ్ కంప్లైంట్ రిజిష్టర్ → 7 రోజుల్లో పరిష్కారం లేని పక్షంలో జోనల్
+        కార్యాలయం → ప్రధాన నోడ్‌ల్ అధికారికి అపీలుచేయండి.  
+
+        మీకు SMS/ఇమెయిల్ ద్వారా వచ్చిన Reference ID తో complaint status ట్రాక్
+        చేయండి.
+    - text: >
+        Ways to file a complaint –  
+
+        1. Online “Raise a Complaint” form on contact-us page.  
+
+        2. Email hocomplaints@mahabank.co.in / cmcustomerservice@mahabank.co.in.  
+
+        3. Toll-free 1800-233-4526 or 1800-102-2636 (24×7).  
+
+        4. Write in branch register → escalate to Zonal Office → Principal Nodal
+        Officer if unresolved in 7 days.
+
+  #       Track status with the reference ID sent to you.
+  utter_branch_location:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        नजदीकी शाखा/ATM खोजें –  
+
+        • branch-atm-locator.bankofmaharashtra.in पर शहर, पिन-कोड या GPS से सर्च
+        करें।  
+
+        • WhatsApp पर ‘Hi’ ↦ विकल्प 5 “Locate Branch/ATM” चुनें।  
+
+        • हेड-ऑफिस: “लोकमंगल”, 1501 शिवाजीनगर, पुणे-411005.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        जवळची शाखा/ATM शोध –  
+        • locator साइट वापरा branch-atm-locator.bankofmaharashtra.in.  
+        • WhatsApp ‘Hi’ → पर्याय 5 “Locate Branch/ATM”.  
+        • मुख्य कार्यालय “लोकमंगल”, शिवाजीनगर, पुणे-411005.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        సమీప బ్రాంచ్/ATM –  
+
+        • branch-atm-locator.bankofmaharashtra.in లో నగరం, పిన్ కోడ్ లేదా GPS తో
+        వెతకండి.  
+
+        • WhatsApp ‘Hi’ ⇒ Option 5 “Locate Branch/ATM”.  
+
+        • హెడ్ ఆఫీస్: “Lokmangal”, 1501, శివాజీనగర్, పుణె-411005.
+    - text: >
+        Use the live locator (branch-atm-locator.bankofmaharashtra.in) or WhatsApp
+        option 5 to find the nearest Bank of Maharashtra branch or ATM.
+  utter_working_hours:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        शाखा समय –  
+        • सोमवार-शुक्रवार 10:00 AM – 4:00 PM  
+        • 1-व 3 शनिवार 10:00 AM – 4:00 PM; 2-व 4 शनिवार, रविवार बंद।  
+        • एनईएफ़टी / नकद काउंटर 30 मिनट पहले बंद।  
+        • ATM, नेट-बैंकिंग, महा-मोबाइल, UPI सेवाएँ 24×7 उपलब्ध।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        बँकेचा वेळ – सोमवार-शुक्रवार व १-३रा शनिवार 10 ते 4; २-४था शनिवार/रविवार
+        बंद.  
+
+        NEFT-कॅश विंडो बंद होण्यापूर्वी 30 मिनिटे.  
+
+        ATM/UPI/नेट-बँकिंग 24×7.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        బ్రాంచ్ సమయాలు – సోమ-శుక్ర 10 AM-4 PM; 1వ & 3వ శనివారం 10 AM-4 PM; 2వ & 4వ
+        శనివారం, ఆదివారం సెలవు.  
+
+        నగదు/NEFT కౌంటర్ 30 నిమిషాల ముందు మూసివేస్తారు.  
+
+        ATM, UPI, మొబైల్/ఇంటర్నెట్ బ్యాంకింగ్ 24×7.
+    - text: >
+        Timings – Mon-Fri & 1st/3rd Sat 10 AM-4 PM; 2nd/4th Sat & Sundays closed.
+        Cash/NEFT counters close 30 min earlier; digital channels work 24×7.
+  utter_minimum_balance:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        न्यूनतम बैलेंस (SB खाते) – मेट्रो ₹2 000, अर्ध-शहरी ₹1 000, ग्रामीण ₹500
+        मासिक औसत।  
+
+        शून्य-बैलेंस: लोक बचत, PMJDY, सैलरी, पेंशन, महाबैंक युवा[111].  
+
+        कमी रखने पर ₹20-75 मासिक शुल्क – क्षेत्र/घाटे के अनुपात में।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        किमान शिल्लक – मेट्रो ₹2 000, उपनगर ₹1 000, ग्रामीण ₹500 (MAB).  
+        झिरो-बॅलन्स: लोक बचत, PMJDY, पगार, पेन्शन, महाबँक युवा.  
+        अपुरा बॅलन्स शुल्क ₹20-75/महिना.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        కనీస బ్యాలెన్స్ – మెట్రో ₹2 000, సెమీయర్బన్ ₹1 000, గ్రామీణ ₹500 (మాస శాతం
+        సగటు).  
+
+        జీరో-బ్యాలెన్స్: PMJDY, లోక్-బచాత్, సాలరీ, పెన్షన్, యువ ఖాతా.  
+
+        తక్కువ ఉన్నప్పుడు ₹20-75 ఛార్జ్ వసూలు.
+    - text: >
+        Minimum Monthly-Average Balance – ₹2 000 (metro), ₹1 000 (semi-urban),
+        ₹500 (rural). Zero-balance products: PMJDY, Lok-Bachat, Salary/Pension,
+        MahaBank Yuva. Charges ₹20–75 if shortfall.
+  utter_ifsc_code:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        IFSC का प्रारूप MAHB0XXXXXX है – MAHB (बैंक) + 0 + 6-अंकीय शाखा कोड।  
+        पासबुक / चेक पन्ने पर छपा होता है; या RBI तथा बैंक वेबसाइट सर्च करें।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: |
+        IFSC फॉरमॅट MAHB0XXXXXX – शेवटचे 6 अंक शाखा कोड.  
+        पासबुक/चेकवर व नेटवर उपलब्ध.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: |
+        IFSC ఫార్మాట్ MAHB0XXXXXX – MAHB (బ్యాంక్) + 0 + 6 అంకెల బ్రాంచ్ కోడ్.  
+        పాస్‌బుక్, చెక్క్‌ లీవ్‌, RBI/BOM వెబ్‌సైట్‌లో చూడండి.
+    - text: >
+        IFSC code format MAHB0XXXXXX. Find it on cheque-leaf, passbook or official
+        search pages.
+  utter_account_types:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        खाते के प्रकार –  
+
+        • बचत: Smart SB, Smart SB Plus, Royal, Purple, Lok Bachat (₹1), महाबैंक
+        Yuva (₹10)।  
+
+        • वर्तमान: Bronze → Diamond (₹1 लाख-₹25 लाख MAB)।  
+
+        • विशेष: सैलरी, पेंशन, PMJDY, NRE/NRO, सीनियर-सिटिजन, मिनर।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        खात्यांचे प्रकार – बचत (Smart SB, Plus, Royal, Purple, लोक बचत), चालू
+        (Bronze-Diamond), पगार, पेन्शन, PMJDY, NRE/NRO.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        ఖాతా రకాలు – పొదుపు (Smart SB, Plus, Royal, Purple, Lok Bachat), కరెంట్
+        (Bronze-Diamond), జీతం, పెన్షన్, PMJDY, NRE/NRO.
+    - text: >
+        Account categories – Savings (Smart SB, Plus, Royal, Purple, Lok-Bachat,
+        Yuva), Current tiers, Salary/Pension, PMJDY BSBDA, NRI accounts.
+  utter_interest_rates:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        प्रमुख ब्याज दर (अगस्त 2025) –  
+        • बचत जमा 2.75 % वार्षिक।  
+        • FD 7 दिन-10 वर्ष 3.25 – 7.10 % (सीनियर +0.50 %).  
+        • होम लोन 8.35 % से, पर्सनल लोन 9.0 % से.  
+        ताज़ा रेट कार्ड bankofmaharashtra.in/retail-interest-rates देखें।
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        व्याज दर – बचत 2.75 %, एफडी 3.25-7.10 %, गृह कर्ज 8.35 % पासून, वैयक्तिक
+        कर्ज 9 % पासून. अद्ययावत दर संकेतस्थळावर.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        వడ్డీ రేట్లు – సేవింగ్స్ 2.75 %, FD 3.25-7.10 %, హోం లోన్ 8.35 % నుండి,
+        పర్సనల్ లోన్ 9 % నుండి. తాజా రేటుకు వెబ్‌సైట్ చూడండి.
+    - text: >
+        Indicative rates (Aug 2025) – Savings 2.75 % p.a.; FD 3.25-7.10 %;
+        Home-loan from 8.35 %, Personal-loan from 9 %. Check latest card online.
+  utter_pmjdy_account:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        प्रधानमंत्री जन-धन योजना खाता –  
+        • शून्य बैलेंस BSBD; मात्र KYC (आधार/पैन) अनिवार्य।  
+        • मुफ्त RuPay डेबिट-कार्ड + ₹2 लाख दुर्घटना बीमा।  
+        • 6 माह बाद ₹10 000 ओवरड्राफ्ट सुविधा।  
+        • सरकारी सब्सिडी / DBT सीधे खाते में।  
+        • खुलवाएँ किसी शाखा या बैंक मित्र पर.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        PMJDY शून्य-बॅलन्स खात्यात मोफत RuPay कार्ड, ₹2 लाख अपघाती विमा, 6
+        महिन्यानंतर ₹10 हजार ओव्हरड्राफ्ट; कोणतीही शाखा/BC सेंटरवर उघडा.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        PMJDY జీరో-బ్యాలెన్స్ ఖాతా – ఉచిత RuPay కార్డ్, ₹2 లక్షల ప్రమాద బీమా, 6
+        నెలల తర్వాత ₹10k ఓవర్‌డ్రాఫ్ట్; ఏ బ్రాంచ్/BC వద్ద కూడా తెరవవచ్చు.
+    - text: >
+        PMJDY zero-balance BSBD account – free RuPay card, ₹2 lakh accident cover,
+        overdraft up to ₹10 000 after six months; open at any branch or BC outlet.
+  utter_nri_services:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: >
+        NRI सेवाएँ – NRE (पूरी रकम वापस योग्य) व NRO खाते; FCNR-B जमा 6 मुद्रा;
+        घर-लोन/परिवार प्रेषण/आधार-रहित बैंकिंग सुविधा; विवरण
+        bankofmaharashtra.in/nri-faqs पर.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        NRE, NRO खाती, FCNR ठेव, घर कर्ज, जलद परतावा सुविधा; तपशील NRI FAQ
+        पृष्ठावर.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        NRE/NRO ఖాతాలు, FCNR-B డిపాజిట్లు, హోం లోన్, రిమిటెన్స్ సేవలు; పూర్తి
+        వివరాలు NRI FAQsలో.
+    - text: >
+        NRI banking – NRE/NRO savings & FDs, FCNR-B in 6 currencies, remittance
+        desk, NRI home-loan. See full FAQ page.
+  utter_salary_account:
+    - condition:
+        - type: slot
+          name: language
+          value: hi
+      text: |
+        महाबैंक सैलरी खाता –  
+        • शून्य बैलेंस, 40 मुफ्त चेक पन्ने/वर्ष।  
+        • RuPay Platinum कार्ड (लाउंज एक्सेस + दुर्घटना कवर ₹20 लाख)।  
+        • त्वरित ओवरड्राफ्ट (दो माह सैलरी तक) व पर्सनल लोन रियायती दर पर।  
+        • केवल Govt/PSU/मान्यता-प्राप्त कॉर्पोरेट कर्मियों के लिए.
+    - condition:
+        - type: slot
+          name: language
+          value: mr
+      text: >
+        महाबँक पगार खाते – झिरो बॅलन्स, मोफत RuPay Platinum, 40 चेच पाने, दोन
+        महिन्यांच्या पगाराइतका ओव्हरड्राफ्ट, अपघाती विमा ₹20 लाख.
+    - condition:
+        - type: slot
+          name: language
+          value: te
+      text: >
+        మహాబ్యాంక్ జీతం ఖాతా – జీరో బ్యాలెన్స్, ఉచిత RuPay Platinum, సంవత్సరానికి
+        40 చెక్‌లు, రెండు నెలల జీతం వరకు ఓవర్‌డ్రాఫ్ట్, ప్రమాద బీమా ₹20 లక్షలు.
+    - text: >
+        MahaBank Salary Account – zero balance, free RuPay Platinum debit card
+        (lounge + ₹20 lakh insurance), 40 free cheque leaves, instant overdraft up
+        to two salaries, concessional personal loan.
 
 session_config:
   session_expiration_time: 60

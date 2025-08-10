@@ -184,6 +184,7 @@ def send_message():
     
     # Get Rasa responses with language information
     replies = send_to_rasa(user_message, selected_language)
+    replies = send_to_rasa(user_message, selected_language)
     for reply in replies:
 
         st.session_state.messages.append({
@@ -195,7 +196,20 @@ def send_message():
     ttss.some(str(replies))
     # tts.some(replies)  # Removed because the 'tts' module could not be resolved
     # Clear the text field by setting user_input to empty string
-    st.session_state.user_input = ""
+    def send_message():
+        # your send message logic here
+        # ...
+        st.session_state.user_input = ""  # REMOVE THIS LINE
+
+        def clear_input():
+            st.session_state.user_input = ""
+
+        st.text_input(
+            "Message",
+            key="user_input",
+            on_change=send_message  # This will call send_message when user presses Enter
+        )
+
 
 def handle_language_change(new_language: str):
     """Handle language change and update welcome message if needed."""
@@ -296,8 +310,44 @@ def main():
     """, unsafe_allow_html=True)
 
     # Footer
-    st.markdown("---")
-    st.markdown('<div style="text-align: center; color: #666; font-size: 0.9em;">🏦 SecureBank Digital Assistant | Secure • Reliable • Available 24/7</div>', unsafe_allow_html=True)
+    # st.markdown("---")
+    # st.markdown('<div style="text-align: center; color: #666; font-size: 0.9em;">🏦 SecureBank Digital Assistant | Secure • Reliable • Available 24/7</div>', unsafe_allow_html=True)
+
+    # Footer
+    st.markdown("""
+    <style>
+    .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: #004d99;  /* Bank blue */
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 0.9em;
+        border-radius: 8px 8px 0 0;
+    }
+    .footer a {
+        color: #ffcc00;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    </style>
+
+    <div class="footer">
+        <p>🏦 <strong>SecureBank Digital Assistant</strong> — Secure • Reliable • Available 24/7</p>
+        <p>
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Contact Us</a>
+        </p>
+        <p style="font-size:0.8em;">© 2025 BankOfMaharashtra. All Rights Reserved.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()

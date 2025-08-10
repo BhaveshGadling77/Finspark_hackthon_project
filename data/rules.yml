@@ -1,49 +1,106 @@
 version: "3.1"
-
 rules:
-<<<<<<< HEAD
-
-- rule: Say goodbye anytime the user says goodbye
-=======
-- rule: Ask for language preference on greet
-  steps:
-  - intent: greet
-  - action: action_ask_language_preference
-
-- rule: Set language preference
-  steps:
-  - intent: set_language
-  - action: action_set_language
-
-- rule: Handle goodbye
->>>>>>> 2eec7ffd (added rasa files)
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-<<<<<<< HEAD
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
-=======
-- rule: Handle bot challenge
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
-
-- rule: Handle happy mood
-  steps:
-  - intent: mood_happy
-  - action: utter_happy
-
-- rule: Handle unhappy mood
-  steps:
-  - intent: mood_unhappy
-  - action: utter_unhappy
-
-- rule: Handle what can do question
-  steps:
-  - intent: ask_what_can_do
-  - action: utter_ask_what_can_do
->>>>>>> 2eec7ffd (added rasa files)
+  - rule: Ask for language when session starts
+    steps:
+      - intent: greet
+      - action: action_ask_language_preference
+  - rule: Set language preference
+    steps:
+      - intent: set_language
+      - action: action_set_language
+  - rule: Handle goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+  - rule: Handle bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+  - rule: Handle happy mood
+    steps:
+      - intent: mood_happy
+      - action: utter_happy
+  - rule: Handle unhappy mood
+    steps:
+      - intent: mood_unhappy
+      - action: utter_unhappy
+  - rule: Handle what can do question
+    steps:
+      - intent: ask_what_can_do
+      - action: utter_ask_what_can_do
+  - rule: Account opening FAQ
+    steps:
+      - intent: ask_account_opening
+      - action: utter_account_opening
+  - rule: Balance enquiry FAQ
+    steps:
+      - intent: ask_balance_enquiry
+      - action: utter_balance_enquiry
+  - rule: ATM services FAQ
+    steps:
+      - intent: ask_atm_services
+      - action: utter_atm_services
+  - rule: Internet banking FAQ
+    steps:
+      - intent: ask_internet_banking
+      - action: utter_internet_banking
+  # - rule: Loan services FAQ
+  #   steps:
+  #     - intent: ask_loan_services
+  #     - action: utter_loan_services
+  # - rule: Credit-card FAQ
+  #   steps:
+  #     - intent: ask_credit_card
+  #     - action: utter_credit_card
+  - rule: Mobile banking FAQ
+    steps:
+      - intent: ask_mobile_banking
+      - action: utter_mobile_banking
+  - rule: WhatsApp banking FAQ
+    steps:
+      - intent: ask_whatsapp_banking
+      - action: utter_whatsapp_banking
+  - rule: Customer-care FAQ
+    steps:
+      - intent: ask_customer_care
+      - action: utter_customer_care
+  - rule: Complaints FAQ
+    steps:
+      - intent: ask_complaints
+      - action: utter_complaints
+  - rule: Branch-location FAQ
+    steps:
+      - intent: ask_branch_location
+      - action: utter_branch_location
+  - rule: Working hours FAQ
+    steps:
+      - intent: ask_working_hours
+      - action: utter_working_hours
+  - rule: Minimum balance FAQ
+    steps:
+      - intent: ask_minimum_balance
+      - action: utter_minimum_balance
+  - rule: IFSC code FAQ
+    steps:
+      - intent: ask_ifsc_code
+      - action: utter_ifsc_code
+  - rule: Account types FAQ
+    steps:
+      - intent: ask_account_types
+      - action: utter_account_types
+  - rule: Interest-rates FAQ
+    steps:
+      - intent: ask_interest_rates
+      - action: utter_interest_rates
+  - rule: PMJDY account FAQ
+    steps:
+      - intent: ask_pmjdy_account
+      - action: utter_pmjdy_account
+  - rule: NRI services FAQ
+    steps:
+      - intent: ask_nri_services
+      - action: utter_nri_services
+  - rule: Salary account FAQ
+    steps:
+      - intent: ask_salary_account
+      - action: utter_salary_account

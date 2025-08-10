@@ -1,111 +1,5 @@
 version: "3.1"
-
 nlu:
-<<<<<<< HEAD
-- intent: weather
-  examples: |
-    - what's the weather today
-    - weather
-    - how is the weather today
-    - can you tell me weather today
-
-- intent: phone
-  examples: |
-   - [4673487384](number)
-   - This is my number [7346783463](number)
-   - Here you go [7346783463](number)
-   - My phone number is [7346783463](number)
- 
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-=======
-  # Intent: Greet - unique greeting patterns
   - intent: greet
     examples: |
       - Hello
@@ -114,557 +8,145 @@ nlu:
       - Greetings
       - Good day
       - Good morning
-      - Good afternoon
-      - Good evening
-      - Hey there
-      - Howdy
-      - Yo
-      - What's up?
-      - How are you?
-      - How's it going?
-      - How's everything?
-      - How have you been?
-      - Nice to meet you
-      - Pleased to meet you
-      - Good to see you
-      - Long time no see
-      - Hey, long time!
-      - It's been a while
-      - Hello my friend
-      - Welcome back
       - नमस्ते
       - नमस्कार
-      - हाय
-      - हेलो
-      - आदाब
-      - शुभ प्रभात
-      - शुभ दोपहर
-      - शुभ संध्या
-      - क्या हाल है?
-      - सब कैसा चल रहा है?
-      - कैसे हो?
-      - आप कैसे हैं?
-      - आप कैसी हैं?
-      - बहुत दिनों बाद मिले
-      - आपसे मिलकर खुशी हुई
-      - मिलकर अच्छा लगा
-      - स्वागत है
-      - अरे वाह! कितने दिनों बाद!
-      - नमस्कार मित्र
-      - आदाब अर्ज़ है
-      - जय श्री कृष्ण
-      - राम राम
-      - हॅलो
-      - शुभ दुपार
-      - शुभ संध्याकाळ
-      - काय म्हणता?
-      - काय चाललंय?
-      - कसे आहात?
-      - तुम्ही कसे आहात?
-      - खूप दिवसांनी भेटलो
-      - तुम्हाला भेटून आनंद झाला
-      - भेटून बरं वाटलं
-      - अरे वा! खूप दिवसांनी!
-      - जय महाराष्ट्र
-      - नमस्कार मंडळी
-      - जय हिंद
-      - నమస్తే
       - హలో
       - హాయ్
-      - శుభోదయం
-      - శుభ మధ్యాహ్నం
-      - శుభ సాయంత్రం
-      - ఎలా ఉన్నావు?
-      - ఎలా ఉన్నారు?
-      - ఏముంది?
-      - మీరు ఎలా ఉన్నారు?
-      - మిమ్మల్ని కలవడం ఆనందంగా ఉంది
-      - చాల రోజుల తర్వాత కలిశాం
-      - కలవడం చాలా సంతోషం
-      - స్వాగతం
-      - బాగున్నావా?
-      - బాగున్నారా?
 
-  # Intent: Set Language
   - intent: set_language
     examples: |
       - I want to use English
       - Set language to Hindi
       - मैं हिंदी चाहता हूं
       - मला मराठी हवी
-      - నాకు తెలుగు కావాలి
-      - ನನಗೆ ಕನ್ನಡ ಬೇಕು
-      - Change language
-      - Switch to [English](language)
-      - I prefer [Hindi](language)
-      - [मराठी](language) में बात करें
-      - [తెలుగు](language)లో మాట్లాడండి
-      - [ಕನ್ನಡ](language)ದಲ್ಲಿ ಮಾತನಾಡಿ
+      - [English](language)
+      - [Hindi](language)
+      - [मराठी](language)
+      - [తెలుగు](language)
 
-  # Intent: Goodbye
   - intent: goodbye
     examples: |
       - Goodbye
       - Bye
-      - Bye bye
-      - See you
       - See you later
-      - See you soon
-      - Take care
-      - Have a good day
-      - Have a great day
-      - Catch you later
-      - Farewell
-      - Later
-      - Peace out
-      - Until next time
-      - Talk to you later
-      - Night night
-      - See you tomorrow
       - अलविदा
       - फिर मिलेंगे
-      - फिर मिलते हैं
-      - ध्यान रखना
-      - कल मिलते हैं
-      - मिलते हैं
-      - अच्छा चलता हूँ
-      - बाद में मिलते हैं
       - पुन्हा भेटू
-      - भेटू या
-      - लवकरच भेटू
-      - काळजी घ्या
-      - उद्या भेटू
-      - भेटू पुढच्या वेळी
-      - भेटू नंतर
-      - निघतो
       - వీడ్కోలు
-      - మళ్లీ కలుద్దాం
-      - మళ్లీ కలుసుకుందాం
-      - తర్వాత కలుద్దాం
-      - జాగ్రత్త
-      - రేపు కలుద్దాం
-      - తిరిగి కలుద్దాం
-      - వీడ్కోలు స్నేహితా
-      - తర్వాత కలుసుకుందాం
 
-  # Intent: Affirm
   - intent: affirm
     examples: |
       - Yes
       - Yeah
-      - Yep
-      - Yup
-      - Ya
-      - Yea
-      - Of course
-      - Absolutely
-      - Definitely
-      - Sure
-      - Sure thing
-      - Certainly
-      - Right
       - Correct
-      - That's correct
-      - That's right
-      - Totally
-      - Exactly
-      - 100 percent
-      - Indeed
-      - True
-      - True that
-      - Sounds good
-      - Okay
-      - Ok
-      - Okie
-      - Okie dokie
-      - Affirmative
-      - Uh-huh
-      - Without a doubt
-      - No doubt
-      - Agreed
-      - I agree
-      - I do
-      - You're right
-      - Fine
-      - Works for me
-      - That works
-      - Cool
-      - Great
       - हाँ
-      - हां
-      - बिल्कुल
-      - हां बिलकुल
-      - बिल्कुल सही
-      - सही कहा
-      - हाँ जी
-      - जी हाँ
-      - ज़रूर
-      - हाँ, क्यों नहीं
-      - बिल्कुल ठीक
-      - हाँ, सही है
-      - ठीक है
-      - सही बात है
-      - बिल्कुल वैसा ही
-      - हाँ, मुझे मंजूर है
-      - सही कहा आपने
-      - बिलकुल हाँ
-      - ठीक है, चलता है
-      - हाँ, सही पकड़े हैं
       - हो
-      - होय
-      - नक्की
-      - अगदी
-      - हो बरोबर
-      - बरोबर
-      - नक्कीच
-      - अगदी बरोबर
-      - हो चालेल
-      - निश्चित
-      - खरंय
-      - हो खरंय
-      - होय नक्की
-      - मान्य आहे
-      - बरोबर बोललात
-      - चालेल
-      - अगदी होय
-      - हो तसंच आहे
-      - हो मला मान्य आहे
-      - अगदी खरं आहे
       - అవును
-      - అవున్
-      - ఖచ్చితంగా
-      - తప్పకుండా
-      - అవును, ఎందుకు కాదు
-      - నిజమే
-      - సరే
-      - కరెక్ట్
-      - సరిగ్గా
-      - అవును, సరైనది
-      - బాగా చెప్పారు
-      - అవును, నేను అంగీకరిస్తున్నాను
-      - తప్పకుండా అవును
-      - ఖచ్చితంగానే
-      - అవును, నిజమే
-      - నాకు సరిపోతుంది
-      - అవును, అది సరి
-      - అవును, పక్కా
-      - బాగుంది
-      - అదే కరెక్ట్
 
-  # Intent: Deny
   - intent: deny
     examples: |
       - No
       - Nope
-      - Nah
-      - No way
-      - Not at all
-      - Absolutely not
-      - Definitely not
-      - Never
-      - Not really
-      - I don't think so
-      - I disagree
-      - Wrong
-      - Not true
-      - No chance
-      - No thanks
-      - I'm not sure
-      - Sorry, no
-      - Not possible
-      - Not happening
-      - No way at all
-      - I refuse
-      - Not okay
-      - No sir
-      - No ma'am
-      - Nope, sorry
-      - No, that's wrong
-      - I can't
-      - I won't
-      - Not interested
-      - Doesn't work for me
-      - That's incorrect
-      - No, I disagree
+      - Not correct
       - नहीं
-      - नहीं जी
-      - बिलकुल नहीं
-      - कभी नहीं
-      - नहीं, ऐसा नहीं है
-      - गलत
-      - नहीं, मुझे नहीं लगता
-      - नहीं, यह सही नहीं है
-      - नहीं, यह संभव नहीं है
-      - नहीं धन्यवाद
-      - बिल्कुल गलत
-      - नहीं, मैं नहीं कर सकता
-      - नहीं, मैं सहमत नहीं हूँ
-      - मना है
-      - नहीं, कभी नहीं
-      - नहीं, मैं तैयार नहीं हूँ
-      - यह सही नहीं
-      - मुझे नहीं चाहिए
-      - यह ठीक नहीं है
-      - मैं मना करता हूँ
       - नाही
-      - अजिबात नाही
-      - कधीच नाही
-      - नाही बुवा
-      - नाही हो
-      - चुकिचं आहे
-      - नाही, मला नाही वाटत
-      - नाही, ते बरोबर नाही
-      - नाही धन्यवाद
-      - नाही शक्य नाही
-      - बिलकुल नाही
-      - नाही, मी नाही करणार
-      - मी मान्य नाही
-      - नाही जमणार
-      - नाही चालणार
-      - नाही मला नको आहे
-      - नाही, ते चुकीचं आहे
-      - नाही अजिबात
       - కాదు
-      - అసలు కాదు
-      - ఎప్పుడూ కాదు
-      - వద్దు
-      - వద్దు, ధన్యవాదాలు
-      - నిజం కాదు
-      - నేను అంగీకరించను
-      - సాధ్యం కాదు
-      - వద్దు, నేను చేయలేను
-      - వద్దు, ఇది సరైంది కాదు
-      - వద్దు, నాకు ఆసక్తి లేదు
-      - ఇది సాధ్యం కాదు
-      - వద్దు, అది తప్పు
-      - వద్దు, అసలు కుదరదు
-      - వద్దు, నేను అంగీకరించను
-      - వద్దు, దాని అవసరం లేదు
-      - వద్దు, నాకది నచ్చదు
 
-
-  # Intent: Mood Happy - recognizes positive mood expressions
   - intent: mood_happy
     examples: |
       - I am happy
-      - I'm so happy
       - I'm feeling great
-      - I'm feeling awesome
-      - I'm doing great
-      - I'm good
-      - Feeling amazing
-      - I'm excited
-      - I'm thrilled
-      - That's wonderful
-      - That's great
-      - That's awesome
-      - Yay
-      - Woohoo
-      - Hurrah
-      - Amazing
       - Awesome
-      - Cool
-      - Great
-      - This is the best
-      - I'm overjoyed
-      - I'm feeling fantastic
-      - I feel blessed
-      - That made my day
-      - Life is good
-      - Loving it
-      - Couldn't be better
-      - Smiling all day
-      - So much fun
       - मैं खुश हूँ
-      - मैं बहुत खुश हूँ
-      - मैं अच्छा महसूस कर रहा हूँ
-      - मैं अच्छा हूँ
-      - बहुत अच्छा लग रहा है
-      - शानदार
-      - अद्भुत
-      - वाह
-      - बढ़िया
-      - मस्त
-      - मज़ा आ गया
-      - क्या बात है
-      - यह तो कमाल है
-      - यह शानदार है
-      - ग़ज़ब
-      - बहुत अच्छा
-      - यह बढ़िया है
-      - मैं खुश महसूस कर रहा हूँ
-      - आज का दिन अच्छा है
-      - दिल खुश हो गया
-      - मी खुश आहे
-      - मी खूप आनंदी आहे
-      - मला खूप छान वाटतंय
-      - छान आहे
-      - मस्त आहे
-      - भारी आहे
-      - अप्रतिम
-      - अफलातून
-      - काय मस्त
-      - जबरदस्त
-      - खूप छान
-      - मस्त मजा
-      - खूप आनंद झाला
-      - माझं मन आनंदी आहे
-      - आजचा दिवस छान आहे
-      - आनंदात आहे
-      - फार मस्त वाटतंय
-      - मजा आली
+      - छान वाटतंय
       - నేను సంతోషంగా ఉన్నాను
-      - నేను చాలా సంతోషంగా ఉన్నాను
-      - నేను బాగున్నాను
-      - నాకు చాలా బాగుంది
-      - అద్భుతం
-      - బాగుంది
-      - వావ్
-      - చాలా బాగుంది
-      - సూపర్
-      - అదిరింది
-      - చక్కగా ఉంది
-      - అద్భుతంగా ఉంది
-      - చాలా సంతోషం
-      - ఇది చాలా బాగుంది
-      - నాకు చాలా ఆనందంగా ఉంది
-      - రోజు బాగుంది
-      - మస్తు ఫన్
-      - హ్యాపీగా ఉన్నాను
 
-   # Intent: mood_unhappy
   - intent: mood_unhappy
     examples: |
       - I am sad
       - I feel bad
-      - I am upset
-      - I am not feeling well
-      - I am down
-      - I am feeling low
       - Not good
-      - I am feeling blue
-      - Unhappy
-      - I am not happy
-      - I feel terrible
-      - I am feeling awful
-      - I am depressed
-      - I am heartbroken
-      - I am miserable
-      - I feel horrible
       - दुःखी हूँ
-      - परेशान हूँ
-      - उदास हूँ
-      - अच्छा नहीं लग रहा
-      - मेरा मन नहीं है
-      - निराश हूँ
-      - दिल टूट गया
-      - बुरा लग रहा है
-      - खिन्न हूँ
-      - उदासीन हूँ
-      - मला वाईट वाटतंय
-      - मी दुःखी आहे
-      - माझं मन उदास आहे
-      - माझं मन नाहीये
-      - निराश झालो
-      - हताश आहे
-      - मन खट्टू आहे
-      - मन उदास आहे
-      - दु:ख होतंय
-      - నిరాశగా ఉన్నాను
+      - वाईट वाटतंय
       - బాధగా ఉంది
-      - నాకేం బాగోలేదు
-      - హృదయం విరిగింది
-      - నాకెంతో బాధగా ఉంది
-      - నేను విచారంగా ఉన్నాను
-      - నేను దుఃఖంగా ఉన్నాను
-      - ఉత్సాహం లేదు
 
-  # Intent: bot_challenge
   - intent: bot_challenge
     examples: |
       - Are you a bot?
       - Are you a human?
-      - Am I talking to a bot?
-      - Am I talking to a human?
-      - Who am I talking to?
       - What are you?
-      - Are you real?
-      - Are you AI?
-      - Are you a robot?
-      - Is this a bot?
-      - Is this a human?
-      - Tell me, are you a bot?
-      - Tell me, are you real?
       - आप बॉट हैं?
-      - आप इंसान हैं?
-      - क्या मैं बॉट से बात कर रहा हूँ?
-      - क्या मैं इंसान से बात कर रहा हूँ?
-      - मैं किससे बात कर रहा हूँ?
-      - आप क्या हैं?
-      - क्या आप असली हैं?
-      - क्या आप रोबोट हैं?
-      - क्या यह बॉट है?
-      - क्या यह इंसान है?
-      - मला सांग, तू बॉट आहेस का?
-      - तू माणूस आहेस का?
-      - मी बॉटशी बोलतोय का?
-      - मी माणसाशी बोलतोय का?
-      - मी कोणाशी बोलतोय?
-      - तू काय आहेस?
-      - तू खरा आहेस का?
-      - तू रोबोट आहेस का?
-      - हे बॉट आहे का?
-      - हे माणूस आहे का?
+      - तू बॉट आहेस का?
       - నువ్వు బాట్‌వా?
-      - నువ్వు మనిషివా?
-      - నేను బాట్‌తో మాట్లాడుతున్నానా?
-      - నేను మనిషితో మాట్లాడుతున్నానా?
-      - నేను ఎవరితో మాట్లాడుతున్నాను?
-      - నువ్వు ఏమిటి?
-      - నువ్వు నిజమా?
-      - నువ్వు రోబోటువా?
-      - ఇది బాట్‌నా?
-      - ఇది మనిషినా?
 
-  # Intent: ask_what_can_do
   - intent: ask_what_can_do
     examples: |
       - What can you do?
-      - What are your capabilities?
-      - What can you help me with?
       - How can you help me?
-      - What are you able to do?
-      - Tell me what you can do
-      - Can you help me?
-      - What kind of things can you do?
-      - What services do you offer?
-      - What are your functions?
       - आप क्या कर सकते हैं?
-      - आपकी क्षमताएँ क्या हैं?
-      - आप मेरी कैसे मदद कर सकते हैं?
-      - आप क्या मदद कर सकते हैं?
-      - आप क्या करने में सक्षम हैं?
-      - मुझे बताइए आप क्या कर सकते हैं
-      - क्या आप मेरी मदद कर सकते हैं?
-      - आप किस तरह की चीजें कर सकते हैं?
-      - आप कौन सी सेवाएँ प्रदान करते हैं?
-      - आपके कार्य क्या हैं?
       - तू काय करू शकतोस?
-      - तुझी क्षमता काय आहे?
-      - तू मला कशी मदत करू शकतोस?
-      - तू काय करू शकतोस सांग
-      - तू कोणत्या गोष्टी करू शकतोस?
-      - तू कोणत्या सेवा देतोस?
-      - तुझे कार्य काय आहे?
       - నువ్వు ఏమి చేయగలవు?
-      - నువ్వు ఏం సహాయం చేయగలవు?
-      - నువ్వు ఏ విధంగా సహాయం చేయగలవు?
-      - నువ్వు ఏం చేయగలవో చెప్పు
-      - నువ్వు ఏ విధమైన పనులు చేయగలవు?
-      - నువ్వు ఏ సేవలు అందిస్తావు?
-      - నీ పనులు ఏమిటి?
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
->>>>>>> 2eec7ffd (added rasa files)
+  - intent: ask_account_opening
+    examples: |
+      - How to open a savings account?
+      - What documents are needed for account opening?
+      - I want to open a new account
+      - बचत खाता कैसे खोलें?
+      - खाते कसे उघडावे?
+      - బ్యాంక్ ఖాతా ఎలా తెరవాలి?
+
+  - intent: ask_balance_enquiry
+    examples: |
+      - How to check account balance?
+      - What is my account balance?
+      - मेरा बैंक बैलेंस कितना है?
+      - माझे खाते बैलन्स काय आहे?
+      - నా బ్యాంక్ బ్యాలెన్స్ ఎంత?
+
+  - intent: session_start
+    examples: |
+      - .
+      - 
+      - start
+      - begin
+
+  - intent: ask_atm_services
+    examples: |
+      - How to get an ATM card?
+      - My ATM card is blocked
+      - एटीएम कार्ड कैसे बनवाएं?
+      - एटीएम कार्ड ब्लॉक झाले आहे
+      - ATM కార్డ్ ఎలా తీసుకోవాలి?
+
+  - intent: ask_internet_banking
+    examples: |
+      - How to register for internet banking?
+      - How to reset my net banking password?
+      - नेट बैंकिंग कैसे शुरू करें?
+      - नेट बँकिंग कसे सुरू करावे?
+      - నెట్ బ్యాంకింగ్ ఎలా మొదలు పెట్టాలి?
+
+  - intent: ask_loan_services
+    examples: |
+      - What is the home loan interest rate?
+      - How to apply for a personal loan?
+      - होम लोन की ब्याज दर क्या है?
+      - होम लोनचा व्याज दर काय?
+      - హోమ్ లోన్ వడ్డీ రేటు ఎంత?
+
+  - intent: ask_credit_card
+    examples: |
+      - How to apply for a credit card?
+      - What are the benefits of a credit card?
+      - क्रेडिट कार्ड कैसे बनवाएं?
+      - क्रेडिट कार्ड कसे बनवावे?
+      - క్రెడిట్ కార్డ్ ఎలా తీసుకోవాలి?
+
+  - intent: ask_customer_care
+    examples: |
+      - What is the customer care number?
+      - How can I contact the bank?
+      - बैंक का कस्टमर केयर नंबर क्या है?
+      - बँकचा कस्टमर केअर नंबर काय?
+      - బ్యాంక్ కస్టమర్ కేర్ నంబర్ ఏమిటి?
