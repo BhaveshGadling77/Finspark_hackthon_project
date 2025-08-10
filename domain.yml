@@ -1,4 +1,3 @@
----
 version: "3.1"
 
 intents:
@@ -46,23 +45,13 @@ entities:
 actions:
   - action_set_language
   - action_ask_language_preference
+  - action_greet
+  - action_provide_help
 
 responses:
   utter_ask_language:
     - text: >-
         Please choose your preferred language / कृपया अपनी भाषा चुनें / कृपया तुमची भाषा निवडा / దయచేసి మీ భాషను ఎంచుకోండి / ದಯವಿಟ್ಟು ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ:
-      # buttons:
-      #   - title: "English"
-      #     payload: '/set_language{{"language":"en"}}'
-
-      #   - title: "हिंदी"
-      #     payload: '/set_language{"language":"hi"}}'
-      #   - title: "मराठी"
-      #     payload: '/set_language{"language":"mr"}}'
-      #   - title: "తెలుగు"
-      #     payload: '/set_language{"language":"te"}}'
-      #   - title: "ಕನ್ನಡ"
-      #     payload: '/set_language{"language":"kn"}}'
 
   utter_language_set:
     - condition:

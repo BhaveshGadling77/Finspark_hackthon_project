@@ -79,26 +79,36 @@ def show_disclaimer():
         - Do NOT enter actual account numbers, passwords, or personal information.
         - All conversations are encrypted in this demo and cleared after session ends.
         """)
-
 def render_message(message: Dict, is_user: bool = False):
-    """Render a chat message with styling."""
+    """Render a chat message with styling and auto text color based on background."""
+    def get_text_color(bg_color: str) -> str:
+        """Determine text color (black or white) based on background brightness."""
+        bg_color = bg_color.lstrip('#')
+        r, g, b = tuple(int(bg_color[i:i+2], 16) for i in (0, 2, 4))
+        brightness = (r*299 + g*587 + b*114) / 1000
+        return "#000000" if brightness > 128 else "#FFFFFF"
+
     if is_user:
+        bg_color = "#0066cc"  # blue
+        text_color = get_text_color(bg_color)
         col1, col2, col3 = st.columns([1, 4, 1])
         with col2:
             st.markdown(f"""
-            <div style="background-color: #0066cc; color: white; padding: 10px 15px;
+            <div style="color: black; background-color: {bg_color}; color: {text_color}; padding: 10px 15px;
                         border-radius: 15px 15px 5px 15px; margin: 5px 0; text-align: left;">
                 {message['content']}
                 <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">{message['timestamp']}</div>
             </div>
             """, unsafe_allow_html=True)
     else:
+        bg_color = "#f0f2f6"  # light gray
+        text_color = get_text_color(bg_color)
         col1, col2, col3 = st.columns([1, 4, 1])
         with col1:
             st.markdown("🏦", help="SecureBank Assistant")
         with col2:
             st.markdown(f"""
-            <div style="background-color: #f0f2f6; color: #262730; padding: 10px 15px;
+            <div style="color: black;  background-color: {bg_color}; color: {text_color}; padding: 10px 15px;
                         border-radius: 15px 15px 15px 5px; margin: 5px 0;
                         border-left: 4px solid #0066cc;">
                 {message['content']}
@@ -184,7 +194,6 @@ def send_message():
     
     # Get Rasa responses with language information
     replies = send_to_rasa(user_message, selected_language)
-    replies = send_to_rasa(user_message, selected_language)
     for reply in replies:
 
         st.session_state.messages.append({
@@ -193,7 +202,7 @@ def send_message():
             'is_user': False
         })
     print(replies)
-    # ttss.some(str(replies))
+    ttss.some(str(replies))
     # tts.some(replies)  # Removed because the 'tts' module could not be resolved
     # Clear the text field by setting user_input to empty string
     def send_message():
@@ -224,7 +233,7 @@ def main():
     # CSS
     st.markdown("""
     <style>
-        .main-header { background: linear-gradient(90deg, #0066cc 0%, #004499 100%);
+        .main-header {color: black; background: linear-gradient(90deg, #0066cc 0%, #004499 100%);
                        padding: 1rem 2rem; border-radius: 10px; color: white; text-align: center; margin-bottom: 2rem; }
         .chat-container { max-height: 60vh; overflow-y: auto; padding: 10px; background-color: #fafafa;
                           border-radius: 10px; margin-bottom: 1rem; }
@@ -243,7 +252,7 @@ def main():
     <div class="main-header">
         <h1>🏦 SecureBank Digital Assistant</h1>
         <p>Your trusted banking companion - Available 24/7</p>
-        <p style="font-size: 0.9em; opacity: 0.8;">{language_flag} Currently in {current_language}</p>
+        <p style="color:black; font-size: 0.9em; opacity: 0.8;">{language_flag} Currently in {current_language}</p>
     </div>
     ''', unsafe_allow_html=True)
     show_disclaimer()
